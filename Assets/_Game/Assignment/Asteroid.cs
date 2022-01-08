@@ -1,6 +1,4 @@
-using DefaultNamespace.ScriptableEvents;
 using UnityEngine;
-using Variables;
 using Random = UnityEngine.Random;
 
 namespace Asteroids
@@ -8,7 +6,7 @@ namespace Asteroids
     [RequireComponent(typeof(Rigidbody2D))]
     public class Asteroid : MonoBehaviour
     {
-        [SerializeField] private ScriptableEventInt _onAsteroidDestroyed;
+        [SerializeField] private TrackableInt _asteroidDestroyedTrackableInt;
         
         [Header("Config:")]
         [SerializeField] private float _minForce;
@@ -21,50 +19,39 @@ namespace Asteroids
         [Header("References:")]
         [SerializeField] private Transform _shape;
 
+        private AsteroidPool _pool;
         private Rigidbody2D _rigidbody;
         private Vector3 _direction;
-        private int _instanceId;
+        private float _size;
+
+        private void Awake()
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();
+        }
 
         private void Start()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _instanceId = GetInstanceID();
+            _pool = AsteroidPool.Instance;
+            
+            SetSize();
+            _rigidbody.mass = _size;
             
             SetDirection();
             AddForce();
             AddTorque();
-            SetSize();
         }
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (string.Equals(other.tag, "Laser"))
-            {
-               HitByLaser();
-            }
-        }
+            if (!string.Equals(other.tag, "Laser")) return;
 
-        private void HitByLaser()
-        {
-            _onAsteroidDestroyed.Raise(_instanceId);
-            Destroy(gameObject);
-        }
-
-        // TODO Can we move this to a single listener, something like an AsteroidDestroyer?
-        public void OnHitByLaser(IntReference asteroidId)
-        {
-            if (_instanceId == asteroidId.GetValue())
+            if (_size > _maxSize * 0.5)
             {
-                Destroy(gameObject);
+                Split(2);
             }
-        }
-        
-        public void OnHitByLaserInt(int asteroidId)
-        {
-            if (_instanceId == asteroidId)
-            {
-                Destroy(gameObject);
-            }
+            
+            _pool.Return(gameObject);
+            _asteroidDestroyedTrackableInt.Value += 1;
         }
         
         private void SetDirection()
@@ -98,8 +85,20 @@ namespace Asteroids
 
         private void SetSize()
         {
-            var size = Random.Range(_minSize, _maxSize);
-            _shape.localScale = new Vector3(size, size, 0f);
+            _size = Random.Range(_minSize, _maxSize);
+            _shape.localScale = new Vector3(_size, _size, 0f);
+        }
+
+        private void Split(int numberOfChildren)
+        {
+            for (int i = 0; i < numberOfChildren; i++)
+            {
+                var go = _pool.Get();
+                var newAsteroid = go.GetComponent<Asteroid>();
+                newAsteroid._size = _size * 0.5f;
+
+                go.transform.position = transform.position;
+            }
         }
     }
 }

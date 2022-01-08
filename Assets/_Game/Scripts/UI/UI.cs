@@ -15,6 +15,7 @@ namespace UI
         
         [Header("Score:")]
         [SerializeField] private TextMeshProUGUI _scoreText;
+        [SerializeField] private TrackableInt _asteroidsDestroyed;
         
         [Header("Timer:")]
         [SerializeField] private TextMeshProUGUI _timerText;
@@ -25,6 +26,7 @@ namespace UI
         private void Start()
         {
             SetHealthText($"Health: {_healthVar.Value}");
+            _asteroidsDestroyed.CallbackOnValueChanged.AddListener(SetScoreText);
         }
 
         public void OnHealthChanged(IntReference newValue)
@@ -37,9 +39,9 @@ namespace UI
             _healthText.text = text;
         }
         
-        private void SetScoreText(string text)
+        private void SetScoreText(int asteroidsDestroyed)
         {
-            _scoreText.text = text;
+            _scoreText.text = ($"Asteroids Destroyed: {asteroidsDestroyed.ToString()}");
         }
         
         private void SetTimerText(string text)

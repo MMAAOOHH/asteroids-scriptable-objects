@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5567069101288871489}
-  - component: {fileID: 5567069101288871488}
   - component: {fileID: 5567069101288871500}
-  m_Layer: 0
+  - component: {fileID: 5567069101288871488}
+  m_Layer: 7
   m_Name: Laser
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,20 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5567069101288871488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5567069101288871502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfdadedd8a48f2f498bcc3362c739143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lasers: {fileID: 11400000, guid: 3c49a44c261bb96478bf5d943fa90418, type: 2}
-  _speed: 0.2
 --- !u!50 &5567069101288871500
 Rigidbody2D:
   serializedVersion: 4
@@ -66,8 +52,22 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &5567069101288871488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5567069101288871502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfdadedd8a48f2f498bcc3362c739143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lasers: {fileID: 11400000, guid: 3c49a44c261bb96478bf5d943fa90418, type: 2}
+  _speed: 0.2
 --- !u!1 &8433375001349643316
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,8 +79,8 @@ GameObject:
   - component: {fileID: 6948810303523190910}
   - component: {fileID: 3978147046847384719}
   - component: {fileID: 892718435696536658}
-  - component: {fileID: 2848251788891171716}
-  m_Layer: 0
+  - component: {fileID: 8045087961841729628}
+  m_Layer: 7
   m_Name: Laser_Sprite
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8433375001349643316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0001, y: 0.295, z: 0}
+  m_LocalPosition: {x: 0, y: 0.295, z: 0}
   m_LocalScale: {x: 0.2, y: 0.23, z: 1}
   m_Children: []
   m_Father: {fileID: 5567069101288871489}
@@ -165,7 +165,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2848251788891171716
+--- !u!61 &8045087961841729628
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

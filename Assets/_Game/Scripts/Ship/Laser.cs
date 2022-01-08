@@ -21,7 +21,11 @@ namespace Ship
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _lasers.Add(gameObject);
-            Debug.Log(" Amount Of Lasers: " + _lasers.Amount);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            Destroy(gameObject);
         }
 
         private void OnDestroy()

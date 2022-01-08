@@ -9,8 +9,9 @@ namespace Ship
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-                Shoot();
+            if (!Input.GetKeyDown(KeyCode.Space))
+                return;
+            Shoot();
         }
         
         private void Shoot()
