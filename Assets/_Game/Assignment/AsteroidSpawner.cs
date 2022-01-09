@@ -6,7 +6,7 @@ namespace Asteroids
 {
     public class AsteroidSpawner : MonoBehaviour
     {
-        // [SerializeField] private Asteroid _asteroidPrefab;
+        [SerializeField] private GameObject _asteroidPrefab;
         [SerializeField] private float _minSpawnTime;
         [SerializeField] private float _maxSpawnTime;
         [SerializeField] private int _minAmount;
@@ -15,7 +15,7 @@ namespace Asteroids
         private float _timer;
         private float _nextSpawnTime;
         private Camera _camera;
-        private AsteroidPool _pool;
+
         private enum SpawnLocation
         {
             Top,
@@ -26,7 +26,6 @@ namespace Asteroids
 
         private void Start()
         {
-            _pool = AsteroidPool.Instance;
             _camera = Camera.main;
             Spawn();
             UpdateNextSpawnTime();
@@ -67,7 +66,9 @@ namespace Asteroids
             {
                 var location = GetSpawnLocation();
                 var position = GetStartPosition(location);
-                var asteroid = _pool.Get();
+                var asteroid = Instantiate(_asteroidPrefab);
+                
+                asteroid.GetComponent<Asteroid>().SetRandomSize();
                 asteroid.transform.position = position;
             }
         }

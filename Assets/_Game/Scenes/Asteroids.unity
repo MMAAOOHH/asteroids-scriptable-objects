@@ -211,6 +211,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2970632031999273636, guid: ab39a3d0044af1d46b46c0ccbc24f3dd, type: 3}
   m_PrefabInstance: {fileID: 2970632032457142644}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &988928669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988928668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8dd450bf4760d544b303a24fdba2230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ability: {fileID: 11400000, guid: 1d95cb61acf50284cbb3fc128254d524, type: 2}
+  _useAbilityKey: 13
 --- !u!114 &988928674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1ae38084ec4c29aa5d36b28f72a324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _asteroidPrefab: {fileID: 1784223117350305384, guid: 01106835b2bc0e347a3bb06b7544b51a, type: 3}
   _minSpawnTime: 2
   _maxSpawnTime: 6
   _minAmount: 1
@@ -288,51 +303,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2002363294
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2002363296}
-  - component: {fileID: 2002363295}
-  m_Layer: 0
-  m_Name: AsteroidPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2002363295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002363294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6d0403558796147a5375bf0fc6b4af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefabToPool: {fileID: 1784223117350305384, guid: 01106835b2bc0e347a3bb06b7544b51a, type: 3}
-  _poolStartSize: 50
---- !u!4 &2002363296
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002363294}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 16.305141, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2970632032457142644
 PrefabInstance:
@@ -469,6 +439,18 @@ PrefabInstance:
     - target: {fileID: 3812517784591816025, guid: c71243f12cdfc2a4282f1805a6098327, type: 3}
       propertyPath: _response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101966235281579915, guid: c71243f12cdfc2a4282f1805a6098327, type: 3}
+      propertyPath: m_text
+      value: 'Asteroids Destoyed: 0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101966235281579915, guid: c71243f12cdfc2a4282f1805a6098327, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101966235362614044, guid: c71243f12cdfc2a4282f1805a6098327, type: 3}
+      propertyPath: m_text
+      value: 'Lasers Shot: 0'
       objectReference: {fileID: 0}
     - target: {fileID: 7101966235372498888, guid: c71243f12cdfc2a4282f1805a6098327, type: 3}
       propertyPath: m_Name

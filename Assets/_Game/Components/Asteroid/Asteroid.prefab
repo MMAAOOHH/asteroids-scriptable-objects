@@ -85,7 +85,6 @@ GameObject:
   - component: {fileID: 3169066251457290625}
   - component: {fileID: 7434321719335165977}
   - component: {fileID: 6355803093840545148}
-  - component: {fileID: 4494071129961802289}
   m_Layer: 6
   m_Name: Asteroid_Sprite
   m_TagString: Asteroid
@@ -174,18 +173,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.55
---- !u!114 &4494071129961802289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7041230333510869417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d71e1252b5cac4aac88a26022dbdeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8259306228213721809
 GameObject:
   m_ObjectHideFlags: 0
